@@ -5,7 +5,7 @@ app.listen(8080);
 
 //handle the http request
 function handler (req, res) {
-		fs.readFile(__dirname + '/index.html',  //read the index.html file and send 500 error if it fails
+		fs.readFile(__dirname + req.url,  //read the index.html file and send 500 error if it fails
 		function (err, data) {
 		  if (err) {
 			res.writeHead(500);
