@@ -1,12 +1,11 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var fs = require('fs');
-var filePath = '.' + request.url;
 app.listen(8080);
 
 //handle the http request
 function handler (req, res) {
-		
+		var filePath = '.' + req.url;
 		if (filePath == "./") {
 			filePath = "./index.html";
 		}
