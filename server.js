@@ -8,7 +8,7 @@ function handler (req, res) {
 		if (req.url == "./") {
 			req.url = "./index.html";
 		}
-		fs.readFile(__dirname + req.url,  //read the index.html file and send 500 error if it fails
+		fs.readFile(req.url,  //read the index.html file and send 500 error if it fails
 		function (err, data) {
 		  if (err) {
 			res.writeHead(500);
