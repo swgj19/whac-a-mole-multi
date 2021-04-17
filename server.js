@@ -5,8 +5,9 @@ app.listen(8080);
 
 //handle the http request
 function handler (req, res) {
-		if (req.url == "") {
-			req.url = "/index.html";
+		var filePath = '.' + request.url;
+		if (filePath == './') {
+    		filePath = './index.html';
 		}
 		fs.readFile(__dirname + req.url,  //read the index.html file and send 500 error if it fails
 		function (err, data) {
