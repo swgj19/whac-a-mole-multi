@@ -9,7 +9,7 @@ function handler(req, res) {
 	if (filePath == './') {
 		filePath = './index.html';
 	}
-	else if	(filePath == './wam') {
+	else if	(filePath == './wam/') {
 		filePath = './index.html';
 	}
 	fs.readFile(
