@@ -9,7 +9,7 @@ function handler (req, res) {
 		if (filePath == "./") {
 			filePath = "./index.html";
 		}
-		fs.readFile(filePath,  //read the index.html file and send 500 error if it fails
+		fs.readFile(filePath,  //read index.html file and send 500 error if it fails
 		function (err, data) {
 		  if (err) {
 			res.writeHead(500);
