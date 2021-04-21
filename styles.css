@@ -38,6 +38,7 @@
 
 .mole {
 	background-image: url('mole2.png');
+	opacity: 0.5;
 	background-size: cover;
 }
 
