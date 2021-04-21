@@ -7,7 +7,6 @@
 	width: 606px;
 	height: 606px;
 	display: flex;
-	flex-wrap: wrap;
 	justify-content: center;
 }
 
