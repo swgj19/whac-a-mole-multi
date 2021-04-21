@@ -1,8 +1,14 @@
+.scores {
+	display: flex;
+	justify-content: flex;
+}
+
 .grid {
 	width: 606px;
 	height: 606px;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .square {
@@ -12,7 +18,7 @@
 }
 
 .mole {
-	background-image: url("mole.jpg");
+	background-image: url('mole.jpg');
 	background-size: cover;
 }
 
