@@ -1,5 +1,5 @@
 .scores {
-	height: 150px;
+	height: auto;
 	width: 606px;
 	display: flex;
 	justify-content: center;
