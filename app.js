@@ -11,6 +11,7 @@ let timerId = null
 function randomSquare() {
   squares.forEach(square => {
     square.classList.remove('mole')
+    square.classList.remove('hit')
   })
 
   let randomSquare = squares[Math.floor(Math.random() * 9)]
@@ -24,6 +25,8 @@ squares.forEach(square => {
     if (square.id == hitPosition) {
       result++
       score.textContent = result
+      square.classList.remove("mole")
+      square.classList.add("hit")
       hitPosition = null
     }
   })
