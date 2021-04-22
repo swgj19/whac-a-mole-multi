@@ -3,7 +3,7 @@
 	width: 606px;
 	display: flex;
 	justify-content: center;
-	background-color: rgb(238, 232, 150);
+	background-color: black;
 	border: solid black 1px;
 }
 
@@ -11,6 +11,7 @@
 	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
 		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 	font-size: 1.3em;
+	color: white;
 	margin: 15px;
 }
 
