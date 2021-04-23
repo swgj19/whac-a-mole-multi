@@ -55,14 +55,18 @@ let countDownTimerId = setInterval(countDown, 1000)
 
 
 //chat
-
+var socket = io();
 document.addEventListener("DOMContentLoaded", function(event) { 
-  var socket = io();
+  
   
   socket.on('chat_message', function(msg){
     console.log(msg);
+    document.getElementById("chat_messages").innerHTML += msg + "<p />";
   });
-
-  socket.emit('chat_message', "test");
+ 
   
+});
+
+document.getElementById("send_btn").addEventListener("click", function(){
+  socket.emit('chat_message', document.getElementById('chat_input').value);
 });
