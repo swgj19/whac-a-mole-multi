@@ -52,3 +52,17 @@ function countDown() {
 
 let countDownTimerId = setInterval(countDown, 1000)
 
+
+
+//chat
+
+document.addEventListener("DOMContentLoaded", function(event) { 
+  var socket = io();
+  
+  socket.on('chat_message', function(msg){
+    console.log(msg);
+  });
+
+  socket.emit('chat_message', "test");
+  
+});

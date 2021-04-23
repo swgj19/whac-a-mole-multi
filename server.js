@@ -25,3 +25,19 @@ function handler(req, res) {
 		}
 	);
 }
+
+
+//io is the instance of socket.io declared on line 2
+io.on('connection', function (socket) {
+	console.log('User connected');
+	
+
+	socket.on('disconnect', function(){
+		console.log('user disconnected');
+	});
+
+	socket.on('chat_message', function(msg){
+		console.log(msg);
+		io.emit('chat_message', msg);
+	});
+	});
