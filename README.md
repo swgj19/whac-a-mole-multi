@@ -1,4 +1,5 @@
 # whac-a-mole-multi
 Two people get to wack moles at the same time. At the end both scores are compared to see who is the winner. 
 
-This is Tom's change. It is different than before. 
+Two people get to wack moles at the same time. At the end both scores are compared to see who is the winner.
+Tom, do you see this?
