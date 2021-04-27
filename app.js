@@ -60,6 +60,7 @@ function countDown() {
    hitPosition = null;
    currentTime = 60;
    timerId = null;
+   timeLeft.textContent = currentTime
  }
 
 }
@@ -79,8 +80,9 @@ function toggle_show_game(){
 		game.style.display = "block";
 		
 	} else {
+		chat.style.display = "flex";
 		game.style.display = "none";
-		chat.style.display = "block";
+		
 	}
 
 }
