@@ -1,6 +1,7 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var fs = require('fs');
+let highscore = 0;
 app.listen(8080);
 
 //handle the http request
@@ -41,4 +42,15 @@ io.on('connection', function (socket) {
 		console.log(msg);
 		io.emit('chat_message', msg);
 	});
+	socket.on('score', function(score){
+		console.log(score);
+		io.emit('score', score);
+		if (msg > highscore){
+			highscore = score;
+			io.emit('chat_message', "A new high score was set: " + highscore)
+		}
+	});
+
+
+
 	});
