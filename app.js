@@ -3,11 +3,10 @@ const mole = document.querySelector('.mole');
 const timeLeft = document.querySelector('#time-left');
 const score = document.querySelector('#score');
 
-let result = 0;
-let hitPosition;
-let currentTime = 60;
-let timerId = null;
-
+let result = 0
+let hitPosition
+let currentTime = 60
+let timerId = null
 var socket = io();
 
 function randomSquare() {
@@ -41,8 +40,16 @@ function moveMole() {
 moveMole();
 
 function countDown() {
-	currentTime--;
-	timeLeft.textContent = currentTime;
+ currentTime--
+ timeLeft.textContent = currentTime
+
+ if (currentTime == 0) {
+   clearInterval(countDownTimerId)
+   clearInterval(timerId)
+   socket.emit('score', result);
+   alert('GAME OVER! Your final score is ' + result)
+
+ }
 
 	if (currentTime == 0) {
 		clearInterval(countDownTimerId);
@@ -58,11 +65,15 @@ let countDownTimerId = setInterval(countDown, 1000);
 
 //chat
 
-document.addEventListener('DOMContentLoaded', function (event) {
-	socket.on('chat_message', function (msg) {
-		console.log(msg);
-		document.getElementById('chat_messages').innerHTML += msg + '<p />';
-	});
+document.addEventListener("DOMContentLoaded", function(event) { 
+  
+  
+  socket.on('chat_message', function(msg){
+    console.log(msg);
+    document.getElementById("chat_messages").innerHTML += msg + "<p />";
+  });
+ 
+  
 });
 
 document.getElementById('send_btn').addEventListener('click', function () {

@@ -1,6 +1,7 @@
 var app = require('http').createServer(handler);
 var io = require('socket.io')(app);
 var fs = require('fs');
+let highscore = 0;
 app.listen(8080);
 
 let highScore = 0;
@@ -47,13 +48,15 @@ io.on('connection', function (socket) {
 		console.log(msg);
 		io.emit('chat_message', msg);
 	});
-	// msg is being passed from client side.
-	socket.on('score', function (msg) {
-		console.log(msg);
-		io.emit('score', msg);
-		if (msg > highScore) {
-			highScore = msg;
-			io.emit('chat_message', 'Newest high score was just set' + highScore);
+	socket.on('score', function(score){
+		console.log(score);
+		io.emit('score', score);
+		if (msg > highscore){
+			highscore = score;
+			io.emit('chat_message', "A new high score was set: " + highscore)
 		}
 	});
-});
+
+
+
+	});
