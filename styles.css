@@ -29,6 +29,11 @@ button:hover {
 	color: white;
 }
 
+.wrap {
+	display: flex;
+	justify-content: center;
+}
+
 .scores {
 	height: auto;
 	width: 606px;
@@ -45,10 +50,11 @@ button:hover {
 }
 
 .container {
-	width: auto;
-	height: auto;
 	display: flex;
 	justify-content: center;
+	width: 750px;
+	height: auto;
+	background-color: green;
 }
 
 .grid {
@@ -92,6 +98,7 @@ button:hover {
 	font-size: 1em;
 	border: 1px solid;
 }
+
 #left_col {
 	max-width: 200px;
 }
