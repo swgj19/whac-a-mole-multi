@@ -47,7 +47,9 @@ function countDown() {
 	if (currentTime == 0) {
 		clearInterval(countDownTimerId);
 		clearInterval(timerId);
-		socket.emit('chat_message', 'User scored: ' + result);
+		// score is event with parameter
+		// parameter is  from msg on server.js
+		socket.emit('score', result);
 		alert('GAME OVER! Your final score is ' + result);
 	}
 }
