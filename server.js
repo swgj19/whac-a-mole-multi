@@ -30,7 +30,7 @@ function handler(req, res) {
 //io is the instance of socket.io declared on line 2
 io.on('connection', function (socket) {
 	console.log('User connected');
-	io.emit('chat_message', "User Connected");
+	socket.broadcast.emit('chat_message', "User Connected");
 
 	socket.on('disconnect', function(){
 		console.log('user disconnected');
