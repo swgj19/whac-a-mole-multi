@@ -96,12 +96,13 @@ startbutton.addEventListener('click', function () {
 const sendbutton = document.getElementById('send_btn');
 const chat_input = document.getElementById('chat_input');
 const chat_output = document.getElementById('chat_messages');
+const user_name = document.getElementById('user_name');
 document.addEventListener("DOMContentLoaded", function(event) { 
   
   
   socket.on('chat_message', function(msg){
     console.log(msg);
-    chat_output.innerHTML = msg + "<p />" + chat_output.innerHTML;
+    chat_output.innerHTML = "<p>" + msg + "</p>" + chat_output.innerHTML;
   });
  
   
@@ -114,7 +115,7 @@ chat_input.addEventListener('keypress', function(event){
 })
 
 sendbutton.addEventListener('click', function () {
-	socket.emit('chat_message', chat_input.value);
+	socket.emit('chat_message', chat_input.value, user_name.value);
 	chat_input.value = "";
 
 });

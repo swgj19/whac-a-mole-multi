@@ -34,14 +34,24 @@
 		</div>
 		</div>
 		<div class="container" id="chat">
-			<div id="chat_container">
-				<span>
-				Chat:
-				<input type="text" id="chat_input" />
-				<input type="button" id="send_btn" value="send" />
-				<input type="button" id="start_btn" value="start game" />
-				</span>
-				<div id="chat_messages"></div>
+			<div id="chat_container" class="row">
+				<div class="column" id="left_col">
+					<p id="user_list_title">Current Users:</p>
+					<ul id="user_list">
+						<li>User 1</li>
+						<li>User 2</li>
+					</ul>
+				</div>
+				<div class="column" id="right_col">
+					<span>
+						<input type="text" id="user_name" placeholder="Your Username" />
+						
+						<input type="text" id="chat_input" placeholder="type message here" />
+						<input type="button" id="send_btn" value="send" />
+						<input type="button" id="start_btn" value="start game" />
+					</span>
+					<div id="chat_messages"></div>
+				</div>
 			</div>
 		</div>
 		<script src="/socket.io/socket.io.js"></script>

@@ -38,9 +38,9 @@ io.on('connection', function (socket) {
 		io.emit('chat_message', 'User Disconnected');
 	});
 
-	socket.on('chat_message', function (msg) {
+	socket.on('chat_message', function (msg, user_name) {
 		console.log(msg);
-		io.emit('chat_message', msg);
+		io.emit('chat_message', user_name + " says: " + msg);
 	});
 	socket.on('score', function(score){
 		console.log(score);

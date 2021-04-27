@@ -42,7 +42,41 @@
 	background-size: cover;
 }
 
+.row {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.column {
+	display: flex;
+	flex-direction: column;
+	flex-basis: 100%;
+	flex: 1;
+	margin: 10px;
+}
+
+#left_col {
+	max-width: 200px;
+}
+
 #chat_container {
 	flex-wrap: wrap;
 
+}
+
+#user_list_title {
+	background-color: darkgrey;
+	color: rgb(23, 8, 240);
+	margin: 0px;
+	padding: 5px;
+	text-align: center;
+}
+
+#user_list {
+	list-style-type: none;
+}
+
+#user_list li {
+	padding: 5px;
 }
