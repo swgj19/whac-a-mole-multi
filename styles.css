@@ -42,6 +42,7 @@
 	background-size: cover;
 }
 
-.hit {
-	background-color: green;
+#chat_container {
+	flex-wrap: wrap;
+
 }
