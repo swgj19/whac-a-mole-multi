@@ -2,6 +2,13 @@ const squares = document.querySelectorAll('.square');
 const mole = document.querySelector('.mole');
 const timeLeft = document.querySelector('#time-left');
 const score = document.querySelector('#score');
+const game = document.getElementById('game');
+const chat = document.getElementById('chat');
+const startbutton = document.getElementById('start_btn');
+let countDownTimerId;
+clearInterval(countDownTimerId);
+game.style.display = "none";
+
 
 let result = 0
 let hitPosition
@@ -37,7 +44,7 @@ function moveMole() {
 	timerId = setInterval(randomSquare, 500);
 }
 
-moveMole();
+
 
 function countDown() {
  currentTime--
@@ -47,35 +54,65 @@ function countDown() {
    clearInterval(countDownTimerId)
    clearInterval(timerId)
    socket.emit('score', result);
+   toggle_show_game();
    alert('GAME OVER! Your final score is ' + result)
-
+   result = 0;
+   hitPosition = null;
+   currentTime = 60;
+   timerId = null;
  }
 
-	if (currentTime == 0) {
-		clearInterval(countDownTimerId);
-		clearInterval(timerId);
-		// score is event with parameter
-		// parameter is  from msg on server.js
-		socket.emit('score', result);
-		alert('GAME OVER! Your final score is ' + result);
-	}
 }
 
-let countDownTimerId = setInterval(countDown, 1000);
+function start_game(){
+	toggle_show_game();
+	moveMole();
+	countDownTimerId = setInterval(countDown, 1000);
+	
+}
+
+function toggle_show_game(){
+	
+	console.log(game.style.display);
+	if (game.style.display === "none"){
+		chat.style.display = "none";
+		game.style.display = "block";
+		
+	} else {
+		game.style.display = "none";
+		chat.style.display = "block";
+	}
+
+}
+
+startbutton.addEventListener('click', function () {
+	
+	start_game();
+});
 
 //chat
-
+const sendbutton = document.getElementById('send_btn');
+const chat_input = document.getElementById('chat_input');
+const chat_output = document.getElementById('chat_messages');
 document.addEventListener("DOMContentLoaded", function(event) { 
   
   
   socket.on('chat_message', function(msg){
     console.log(msg);
-    document.getElementById("chat_messages").innerHTML += msg + "<p />";
+    chat_output.innerHTML = msg + "<p />" + chat_output.innerHTML;
   });
  
   
 });
 
-document.getElementById('send_btn').addEventListener('click', function () {
-	socket.emit('chat_message', document.getElementById('chat_input').value);
+chat_input.addEventListener('keypress', function(event){
+	if (event.key == "Enter"){
+		sendbutton.click();
+	}
+})
+
+sendbutton.addEventListener('click', function () {
+	socket.emit('chat_message', chat_input.value);
+	chat_input.value = "";
+
 });

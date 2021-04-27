@@ -8,6 +8,7 @@
 		<link rel="stylesheet" href="styles.css" />
 	</head>
 	<body>
+		<div id="game">
 		<div class="container">
 			<div class="scores">
 				<h2>Your score:</h2>
@@ -31,10 +32,17 @@
 				<div class="square" id="9"></div>
 			</div>
 		</div>
-		<div class="container">
-			<div id="chat_messages"></div>
-			<input type="text" id="chat_input" />
-			<input type="button" id="send_btn" value="send" />
+		</div>
+		<div class="container" id="chat">
+			<div id="chat_container">
+				<span>
+				Chat:
+				<input type="text" id="chat_input" />
+				<input type="button" id="send_btn" value="send" />
+				<input type="button" id="start_btn" value="start game" />
+				</span>
+				<div id="chat_messages"></div>
+			</div>
 		</div>
 		<script src="/socket.io/socket.io.js"></script>
 		<script src="app.js"></script>
