@@ -30,15 +30,13 @@ function handler(req, res) {
 //io is the instance of socket.io declared on line 2
 io.on('connection', function (socket) {
 	console.log('User connected');
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	io.emit('chat_message', 'User Connected');
-=======
+
 	socket.broadcast.emit('chat_message', "User Connected");
->>>>>>> 59f7a44c9253b6f63ca40560bd18bae95b3e7c70
-=======
+
 	socket.broadcast.emit('chat_message', "User Connected");
->>>>>>> d70896a2c53f08545d074c13026167f320c28566
+
 
 	socket.on('disconnect', function () {
 		console.log('user disconnected');
