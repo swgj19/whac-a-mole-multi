@@ -7,6 +7,7 @@ let result = 0
 let hitPosition
 let currentTime = 60
 let timerId = null
+var socket = io();
 
 function randomSquare() {
   squares.forEach(square => {
@@ -45,7 +46,9 @@ function countDown() {
  if (currentTime == 0) {
    clearInterval(countDownTimerId)
    clearInterval(timerId)
+   socket.emit('score', result);
    alert('GAME OVER! Your final score is ' + result)
+
  }
 
 }
@@ -55,7 +58,7 @@ let countDownTimerId = setInterval(countDown, 1000)
 
 
 //chat
-var socket = io();
+
 document.addEventListener("DOMContentLoaded", function(event) { 
   
   
