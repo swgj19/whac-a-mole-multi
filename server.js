@@ -3,13 +3,14 @@ var io = require('socket.io')(app);
 var fs = require('fs');
 app.listen(8080);
 
+let highScore = 0;
+
 //handle the http request
 function handler(req, res) {
 	var filePath = '.' + req.url;
 	if (filePath == './') {
 		filePath = './index.html';
-	}
-	else if	(filePath == './wam/') {
+	} else if (filePath == './wam/') {
 		filePath = './index.html';
 	}
 	fs.readFile(
@@ -26,19 +27,27 @@ function handler(req, res) {
 	);
 }
 
-
 //io is the instance of socket.io declared on line 2
 io.on('connection', function (socket) {
 	console.log('User connected');
-	io.emit('chat_message', "User Connected");
+	io.emit('chat_message', 'User Connected');
 
-	socket.on('disconnect', function(){
+	socket.on('disconnect', function () {
 		console.log('user disconnected');
-		io.emit('chat_message', "User Disconnected");
+		io.emit('chat_message', 'User Disconnected');
 	});
 
-	socket.on('chat_message', function(msg){
+	socket.on('chat_message', function (msg) {
 		console.log(msg);
 		io.emit('chat_message', msg);
 	});
+	// msg is being passed from client side.
+	socket.on('score', function (msg) {
+		console.log(msg);
+		io.emit('score', msg);
+		if (msg > highScore) {
+			highScore = msg;
+			io.emit('chat_message', 'Newest high score was just set' + highScore);
+		}
 	});
+});
