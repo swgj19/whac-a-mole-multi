@@ -45,7 +45,7 @@ io.on('connection', function (socket) {
 	socket.on('score', function(score){
 		console.log(score);
 		io.emit('score', score);
-		if (msg > highscore){
+		if (score > highscore){
 			highscore = score;
 			io.emit('chat_message', "A new high score was set: " + highscore)
 		}
