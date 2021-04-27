@@ -34,10 +34,14 @@ io.on('connection', function (socket) {
 
 	io.emit('chat_message', 'User Connected');
 
+<<<<<<< HEAD
 	socket.broadcast.emit('chat_message', "User Connected");
 
 	socket.broadcast.emit('chat_message', "User Connected");
 
+=======
+	socket.broadcast.emit('chat_message', 'User Connected');
+>>>>>>> 0f56a3075ef5932f3cd63b8986c162b9c7fdce75
 
 	socket.on('disconnect', function () {
 		console.log('user disconnected');
