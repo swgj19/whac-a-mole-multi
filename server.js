@@ -30,11 +30,16 @@ function handler(req, res) {
 
 //io is the instance of socket.io declared on line 2
 io.on('connection', function (socket) {
+	const clients = io.sockets.sockets;
 	console.log('User connected');
 	socket.broadcast.emit('chat_message', "User Connected");
-
+	for (const s of clients) {
+		socket.emit('user_update', s[0], "connected");	
+	};
+	
 	socket.on('disconnect', function () {
-		console.log('user disconnected');
+		console.log('user disconnected: ' + socket.id);
+		io.emit('user_update', socket.id, "disconnected");
 		io.emit('chat_message', 'User Disconnected');
 	});
 
@@ -49,6 +54,11 @@ io.on('connection', function (socket) {
 			highscore = score;
 			io.emit('chat_message', "A new high score was set: " + highscore)
 		}
+	});
+	socket.on('user_name_update', function(username){
+		socket.data.user_name = username;
+		io.emit('user_name_update', socket.id, socket.data.user_name);
+		
 	});
 
 
