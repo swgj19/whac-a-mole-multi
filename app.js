@@ -17,8 +17,8 @@ var socket = io();
 
 function playSound() {
 	let audio = new Audio('mallet-chime.mp3');
-	audio.play;
-	alert('It is working!');
+	audio.play();
+	//alert('It is working!');
 }
 
 function randomSquare() {
