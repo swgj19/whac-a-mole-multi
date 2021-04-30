@@ -95,31 +95,31 @@ const chat_input = document.getElementById('chat_input');
 const chat_output = document.getElementById('chat_messages');
 const user_name = document.getElementById('user_name');
 const user_list = document.getElementById('user_list');
+
 document.addEventListener('DOMContentLoaded', function (event) {
 	//chat message event listener
 	socket.on('chat_message', function (msg) {
 		chat_output.innerHTML = '<p>' + msg + '</p>' + chat_output.innerHTML;
 	});
-	//chat user list event listener
-	socket.on('user_update', function(user, status){
-		if (status === "connected"){
-			var li = document.createElement("li");
-			li.setAttribute("id", user)
-			li.appendChild(document.createTextNode(user.username));
-			user_list.appendChild(li);
-		} else {
-			document.getElementById(user).remove();
-			console.log(user);
-		}
-	})
-	//connection completed listener
-	socket.on('connect', function(){		
-		socket.emit('user_name_update', user_name.value)
-	})
+
 	//username update listener
-	socket.on('user_name_update', function(userid, username){
-		document.getElementById(userid).innerHTML = username;
-		
+	socket.on('user_name_update', function(userid, username, status){
+		let userElement = document.getElementById(userid);
+		console.log(userid);
+		if (status === "disconnected"){
+			userElement.remove();
+			
+		} else {
+			if (userElement === null){
+				var li = document.createElement("li");
+				li.setAttribute("id", userid);
+				li.appendChild(document.createTextNode(username));
+				user_list.appendChild(li);
+			} else {
+				userElement.innerHTML = username;
+			}
+
+		}
 	});
 });
 
@@ -134,4 +134,6 @@ sendbutton.addEventListener('click', function () {
 	chat_input.value = '';
 });
 
-
+user_name.addEventListener('focusout', function(){
+	socket.emit('user_name_update', user_name.value)
+})
