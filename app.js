@@ -94,10 +94,32 @@ const sendbutton = document.getElementById('send_btn');
 const chat_input = document.getElementById('chat_input');
 const chat_output = document.getElementById('chat_messages');
 const user_name = document.getElementById('user_name');
+const user_list = document.getElementById('user_list');
+
 document.addEventListener('DOMContentLoaded', function (event) {
+	//chat message event listener
 	socket.on('chat_message', function (msg) {
-		console.log(msg);
 		chat_output.innerHTML = '<p>' + msg + '</p>' + chat_output.innerHTML;
+	});
+
+	//username update listener
+	socket.on('user_name_update', function(userid, username, status){
+		let userElement = document.getElementById(userid);
+		console.log(userid);
+		if (status === "disconnected"){
+			userElement.remove();
+			
+		} else {
+			if (userElement === null){
+				var li = document.createElement("li");
+				li.setAttribute("id", userid);
+				li.appendChild(document.createTextNode(username));
+				user_list.appendChild(li);
+			} else {
+				userElement.innerHTML = username;
+			}
+
+		}
 	});
 });
 
@@ -111,3 +133,7 @@ sendbutton.addEventListener('click', function () {
 	socket.emit('chat_message', chat_input.value, user_name.value);
 	chat_input.value = '';
 });
+
+user_name.addEventListener('focusout', function(){
+	socket.emit('user_name_update', user_name.value)
+})
