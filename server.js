@@ -32,7 +32,7 @@ function handler(req, res) {
 io.on('connection', function (socket) {
 	const clients = io.sockets.sockets;
 	socket.broadcast.emit('chat_message', "User Connected"); // tell everyone else that a user has connected
-	socket.data.user_name = socket.id; // set my temporary username
+	socket.data.user_name = "Anonymous"; // set my temporary username
 	socket.broadcast.emit('user_name_update', socket.id, socket.data.user_name);  //tell everyone else that I'm here. 
 	for (const s of clients) {
 		socket.emit('user_name_update', s[0], s[1].data.user_name, "connected");	// build my user list
