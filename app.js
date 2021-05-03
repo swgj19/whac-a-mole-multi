@@ -47,7 +47,7 @@ squares.forEach((square) => {
 });
 
 function moveMole() {
-	timerId = setInterval(randomSquare, 500);
+	timerId = setInterval(randomSquare, 550);
 }
 
 function countDown() {
@@ -103,22 +103,20 @@ document.addEventListener('DOMContentLoaded', function (event) {
 	});
 
 	//username update listener
-	socket.on('user_name_update', function(userid, username, status){
+	socket.on('user_name_update', function (userid, username, status) {
 		let userElement = document.getElementById(userid);
 		console.log(userid);
-		if (status === "disconnected"){
+		if (status === 'disconnected') {
 			userElement.remove();
-			
 		} else {
-			if (userElement === null){
-				var li = document.createElement("li");
-				li.setAttribute("id", userid);
+			if (userElement === null) {
+				var li = document.createElement('li');
+				li.setAttribute('id', userid);
 				li.appendChild(document.createTextNode(username));
 				user_list.appendChild(li);
 			} else {
 				userElement.innerHTML = username;
 			}
-
 		}
 	});
 });
@@ -134,6 +132,6 @@ sendbutton.addEventListener('click', function () {
 	chat_input.value = '';
 });
 
-user_name.addEventListener('focusout', function(){
-	socket.emit('user_name_update', user_name.value)
-})
+user_name.addEventListener('focusout', function () {
+	socket.emit('user_name_update', user_name.value);
+});
