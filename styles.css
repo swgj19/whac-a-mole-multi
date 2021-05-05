@@ -108,8 +108,14 @@ button:hover {
 	background-position: center;
 }
 
-.teaser {
+.miss {
 	background-color: red;
+	background-image: url('x.png');
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
 }
 
 .row {
