@@ -26,10 +26,8 @@ function randomSquare() {
 		square.classList.remove('mole');
 		square.classList.remove('hit');
 	});
-
 	let randomSquare = squares[Math.floor(Math.random() * 9)];
 	randomSquare.classList.add('mole');
-
 	hitPosition = randomSquare.id;
 }
 
@@ -40,11 +38,19 @@ squares.forEach((square) => {
 			score.textContent = result;
 			square.classList.remove('mole');
 			square.classList.add('hit');
+			//teaserImage();
 			hitPosition = null;
 			playSound();
 		}
 	});
 });
+
+// function teaserImage() {
+// 	if (!randomSquare) {
+// 		square.classList.add('teaser');
+// 		//alert('working');
+// 	}
+// }
 
 function moveMole() {
 	timerId = setInterval(randomSquare, 550);
