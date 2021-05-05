@@ -108,6 +108,10 @@ button:hover {
 	background-position: center;
 }
 
+.teaser {
+	background-color: red;
+}
+
 .row {
 	display: flex;
 	flex-direction: row;
