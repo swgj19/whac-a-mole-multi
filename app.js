@@ -21,10 +21,16 @@ function playSound() {
 	//alert('It is working!');
 }
 
+function missSound() {
+	let audio = new Audio('buzzer.wav');
+	audio.play();
+}
+
 function randomSquare() {
 	squares.forEach((square) => {
 		square.classList.remove('mole');
 		square.classList.remove('hit');
+		square.classList.remove('miss');
 	});
 	let randomSquare = squares[Math.floor(Math.random() * 9)];
 	randomSquare.classList.add('mole');
@@ -38,19 +44,14 @@ squares.forEach((square) => {
 			score.textContent = result;
 			square.classList.remove('mole');
 			square.classList.add('hit');
-			//teaserImage();
 			hitPosition = null;
 			playSound();
+		} else {
+			square.classList.add('miss');
+			missSound();
 		}
 	});
 });
-
-// function teaserImage() {
-// 	if (!randomSquare) {
-// 		square.classList.add('teaser');
-// 		//alert('working');
-// 	}
-// }
 
 function moveMole() {
 	timerId = setInterval(randomSquare, 550);
