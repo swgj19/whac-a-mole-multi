@@ -5,6 +5,9 @@ const score = document.querySelector('#score');
 const game = document.getElementById('game');
 const chat = document.getElementById('chat');
 const startbutton = document.getElementById('start_btn');
+const difficulty = 0;
+const baseMoleSpeed = 500;
+const gameSpeed = baseMoleSpeed - ( difficulty * 50);
 let countDownTimerId;
 clearInterval(countDownTimerId);
 game.style.display = 'none';
@@ -54,7 +57,7 @@ squares.forEach((square) => {
 });
 
 function moveMole() {
-	timerId = setInterval(randomSquare, 550);
+	timerId = setInterval(randomSquare, gameSpeed);
 }
 
 function countDown() {
@@ -77,6 +80,7 @@ function countDown() {
 
 function start_game() {
 	toggle_show_game();
+	console.log( "Mole Speed : " + gameSpeed + "ms")
 	moveMole();
 	countDownTimerId = setInterval(countDown, 1000);
 }
