@@ -13,6 +13,7 @@ clearInterval(countDownTimerId);
 game.style.display = 'none';
 
 let result = 0;
+let miss = 0; 
 let hitPosition;
 let currentTime = 60;
 let timerId = null;
@@ -51,7 +52,10 @@ squares.forEach((square) => {
 			playSound();
 		} else {
 			square.classList.add('miss');
-			missSound();
+			if(miss % 3 == 0){
+				missSound();
+			}
+			miss++;
 		}
 	});
 });
@@ -71,6 +75,7 @@ function countDown() {
 		toggle_show_game();
 		alert('GAME OVER! Your final score is ' + result);
 		result = 0;
+		miss = 0;
 		hitPosition = null;
 		currentTime = 60;
 		timerId = null;
