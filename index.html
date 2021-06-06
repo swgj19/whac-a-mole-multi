@@ -61,6 +61,49 @@
 						<button type="button" id="send_btn" value="send" />send</button>
 						<button type="button" id="start_btn" value="start game" />start game
 						</button>
+
+						<!-- selector that points to modal we want to open if several reusable modals -->
+						<button data-modal-target='#modal' class="button-modal">accept challenge 1</button>
+						<div class='modal' id='modal'>
+							<div class='modal-header'>
+								<div class='title'>You have been challenged by {user here}</div>
+								<button data-close-button class='close-button'>&times;</button>
+							</div>
+
+							<div class='modal-body'>
+								Lorem Ipsum is simply dummy text of the printing and typesetting
+								industry. Lorem Ipsum has been
+								the
+								industry's standard dummy text ever since the 1500s, when an unknown
+								printer took a galley of
+								type and
+								scrambled it to make a type specimen book. It has survived not only five
+								centuries, but also the
+								leap
+								into
+								electronic typesetting, remaining essentially unchanged. It was
+								popularised in the 1960s with
+								the
+								release of
+								Letraset sheets containing Lorem Ipsum passages, and more recently with
+								desktop publishing
+								software
+								like
+								Aldus PageMaker including versions of Lorem Ipsum.
+							</div>
+						</div>
+
+						<button data-modal-target='#modal2'>accept challange 2</button>
+						<div class='modal' id='modal2'>
+							<div class='modal-header'>
+								<div class='title'>You have been challenged by {user here}</div>
+								<button data-close-button class='close-button'>&times;</button>
+							</div>
+
+							<div class='modal-body'>
+								Cats can jump high and land on their feet.
+							</div>
+						</div>
 					</span>
 					<div id="chat_messages"></div>
 				</div>
@@ -68,43 +111,7 @@
 		</div>
 	</div>
 
-	<!-- selector that points to modal we want to open if several reusable modals -->
-	<button data-modal-target='#modal'>Open modal 1</button>
-	<div class='modal' id='modal'>
-		<div class='modal-header'>
-			<div class='title'>You have been challenged by {user here}</div>
-			<button data-close-button class='close-button'>&times;</button>
-		</div>
 
-		<div class='modal-body'>
-			Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-			the
-			industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of
-			type and
-			scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-			leap
-			into
-			electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with
-			the
-			release of
-			Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing
-			software
-			like
-			Aldus PageMaker including versions of Lorem Ipsum.
-		</div>
-	</div>
-
-	<button data-modal-target='#modal2'>Open modal 2</button>
-	<div class='modal' id='modal2'>
-		<div class='modal-header'>
-			<div class='title'>You have been challenged by {user here}</div>
-			<button data-close-button class='close-button'>&times;</button>
-		</div>
-
-		<div class='modal-body'>
-			Cats can jump high and land on their feet.
-		</div>
-	</div>
 
 	<div id='overlay'></div>
 
