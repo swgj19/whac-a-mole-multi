@@ -7,26 +7,26 @@ const chat = document.getElementById('chat');
 const startbutton = document.getElementById('start_btn');
 const difficulty = 0;
 const baseMoleSpeed = 500;
-const gameSpeed = baseMoleSpeed - ( difficulty * 50);
+const gameSpeed = baseMoleSpeed - difficulty * 50;
 let countDownTimerId;
 clearInterval(countDownTimerId);
 game.style.display = 'none';
 
 let result = 0;
-let miss = 0; 
+let miss = 0;
 let hitPosition;
 let currentTime = 60;
 let timerId = null;
 var socket = io();
 
 function playSound() {
-	let audio = new Audio('mallet-chime.mp3');
+	let audio = new Audio('audio/mallet-chime.mp3');
 	audio.play();
 	//alert('It is working!');
 }
 
 function missSound() {
-	let audio = new Audio('buzzer.wav');
+	let audio = new Audio('audio/buzzer.wav');
 	audio.play();
 }
 
@@ -52,7 +52,7 @@ squares.forEach((square) => {
 			playSound();
 		} else {
 			square.classList.add('miss');
-			if(miss % 3 == 0){
+			if (miss % 3 == 0) {
 				missSound();
 			}
 			miss++;
@@ -85,7 +85,7 @@ function countDown() {
 
 function start_game() {
 	toggle_show_game();
-	console.log( "Mole Speed : " + gameSpeed + "ms")
+	console.log('Mole Speed : ' + gameSpeed + 'ms');
 	moveMole();
 	countDownTimerId = setInterval(countDown, 1000);
 }
