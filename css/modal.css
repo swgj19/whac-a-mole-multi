@@ -11,6 +11,7 @@
 	/* to center modal (x-axis, y-axis) */
 	transform: translate(-50%, -50%) scale(0);
 	transition: 200ms ease-in-out;
+	color: black;
 	border: 1px solid black;
 	border-radius: 10px;
 	z-index: 10;
@@ -29,11 +30,22 @@
 	justify-content: space-between;
 	align-items: center;
 	border-bottom: 1px solid black;
+	color: black;
 }
 
 .modal-header .title {
 	font-size: 1.25rem;
 	font-weight: bold;
+}
+
+.close-button span {
+	content: \00d7;
+	color: red;
+	font-size: 35px;
+}
+
+.close-button:hover span {
+	color: black;
 }
 
 .modal-header .close-button {
