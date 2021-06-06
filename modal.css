@@ -65,3 +65,7 @@
 	opacity: 1;
 	pointer-events: all;
 }
+
+.button-modal {
+	margin-top: 20px;
+}
