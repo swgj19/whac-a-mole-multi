@@ -91,16 +91,16 @@ button:hover {
 	height: 200px;
 	width: 200px;
 	border: solid black 1px;
-	background-image: url('dot-grid.png');
+	background-image: url('/images/dot-grid.png');
 }
 
 .mole {
-	background-image: url('mole2.png');
+	background-image: url('/images/mole2.png');
 	background-size: cover;
 }
 
 .hit {
-	background-image: url('whack.jpg');
+	background-image: url('/images/whack.jpg');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -110,7 +110,7 @@ button:hover {
 
 .miss {
 	background-color: red;
-	background-image: url('x.png');
+	background-image: url('/images/x.png');
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
