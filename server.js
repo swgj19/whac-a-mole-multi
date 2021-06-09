@@ -62,6 +62,10 @@ io.on('connection', function (socket) {
 		
 	});
 
+	socket.on('challenge', function(user){
+		io.to(user).emit('challenge', socket.data.user_name)
+	});
+
 
 
 	});

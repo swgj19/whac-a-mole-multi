@@ -101,6 +101,11 @@ function toggle_show_game() {
 	}
 }
 
+function challenge(userid){
+	console.log('sending challenge to : ' + userid)
+	socket.emit('challenge', userid);
+}
+
 startbutton.addEventListener('click', function () {
 	start_game();
 });
@@ -118,20 +123,32 @@ document.addEventListener('DOMContentLoaded', function (event) {
 		chat_output.innerHTML = '<p>' + msg + '</p>' + chat_output.innerHTML;
 	});
 
+	socket.on('challenge', function(username){
+		console.log(username);
+		// this is where the modal should pop up. The username var would have the value Tom in it if Tom had challenged you.
+	});
+
 	//username update listener
 	socket.on('user_name_update', function (userid, username, status) {
 		let userElement = document.getElementById(userid);
-		console.log(userid);
 		if (status === 'disconnected') {
 			userElement.remove();
 		} else {
 			if (userElement === null) {
 				var li = document.createElement('li');
+				var challengeBtn = document.createElement('button');
+				var usernameText = document.createElement('p');
+				usernameText.innerHTML = username;
+				usernameText.setAttribute('id', userid + "_text");
+				challengeBtn.setAttribute('id', userid);
+				challengeBtn.appendChild(document.createTextNode('Challenge'));
+				challengeBtn.setAttribute('onclick', 'challenge("' + userid + '")')
 				li.setAttribute('id', userid);
-				li.appendChild(document.createTextNode(username));
+				li.appendChild(usernameText);
+				li.appendChild(challengeBtn);
 				user_list.appendChild(li);
 			} else {
-				userElement.innerHTML = username;
+				document.getElementById(userid + "_text").innerHTML = username;
 			}
 		}
 	});
